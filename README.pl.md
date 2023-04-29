@@ -1,3 +1,6 @@
+https://beatahryniewicka.github.io/goit-js-hw-10/
+
+
 # Parcel template
 
 Ten projekt został stworzony przy pomocy Parcel. W celu zapoznania się i
