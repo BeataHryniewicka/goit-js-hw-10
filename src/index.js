@@ -12,6 +12,7 @@ const clearInput = () => {
   countryListEl.innerHTML = '';
   countryInfoEl.innerHTML = '';
 };
+
 inputEl.addEventListener(
   'input',
   debounce(async event => {
