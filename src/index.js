@@ -7,7 +7,11 @@ const DEBOUNCE_DELAY = 300;
 const inputEl = document.getElementById('search-box');
 const countryListEl = document.querySelector('.country-list');
 const countryInfoEl = document.querySelector('.country-info');
+const btnList = document.getElementById('btn1');
+const btnCountry = document.getElementById('btn2');
 
+btnList.addEventListener('click', filteredList);
+btnCountry.addEventListener('click', filteredCountry);
 const clearInput = () => {
   countryListEl.innerHTML = '';
   countryInfoEl.innerHTML = '';
@@ -39,11 +43,14 @@ function filteredCountry(countries) {
   const countryInfo = countries
     .map(country => {
       return `<li class= "country-list">
-  <img src="${country.flags.svg}" width="100" alt = "Flag of ${country.name.official}"/>
-  <p><b>name: ${country.name.official}</b></p>
-  <p><b>capital: ${country.capital}</b></p>
-  <p><b>population: ${country.population}</b></p>
-  <p><b>languages: ${country.languages}</b></p>
+  <img src="${country.flags.svg}" width="100" alt = "Flag of ${
+        country.name.official
+      }"/>
+  <p><b>Country: ${country.name.official}</b></p>
+  <p><b>Capital: ${country.capital}</b></p>
+  <p><b>Population: ${country.population}</b></p>
+  <p><b>Languages:${Object.values(country.languages).join(', ')}
+      }</b></p>
   </li>`;
     })
     .join('');
