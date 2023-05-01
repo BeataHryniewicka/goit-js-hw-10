@@ -15,21 +15,21 @@ const clearInput = () => {
 
 inputEl.addEventListener(
   'input',
-  debounce(
-    async event => {
-      const countryName = event.target.value.trim();
+  debounce(async event => {
+    const countryName = event.target.value.trim();
 
-      if (countryName === ' ') {
-        clearInput();
-      }
+    if (countryName === ' ') {
+      clearInput();
+    }
 
-      const countryArray = await fetchCountries(countryName);
-      console.log(Array.isArray(countryArray));
-      // if (countryArray.length > 10) {
-      //   Notiflix.Notify.info(
-      //     'Too many matches found. Please enter a more specific name.'
-      //   );
-      // } else {
+    const countryArray = await fetchCountries(countryName);
+    console.log(Array.isArray(countryArray));
+
+    if (countryArray.length > 10) {
+      Notiflix.Notify.info(
+        'Too many matches found. Please enter a more specific name.'
+      );
+    } else {
       countryListEl.innerHTML = countryArray
         .map(
           country => `<li>
@@ -40,25 +40,22 @@ inputEl.addEventListener(
         .join('');
     }
 
-    // if (countryArray.length === 1) {
-
-    // countryInfoEl.innerHTML = countryArray
-    //   .map(
-    //     country =>
-    //       `<li class= "country-info">
-    // <img  src="${country.flags.svg}" width="100" alt = "Flag of ${
-    //         country.name.official
-    //       }"/>
-    // <p class = "one-country" ><b> ${country.name.official}</b></p>
-    // <p><b>Capital:  ${country.capital}</b></p>
-    // <p><b>Population:  ${country.population}</b></p>
-    // <p><b>Languages: ${Object.values(country.languages).join(', ')}</b></p>
-    // </li>`
-    //   )
-    //   .join('');
-    // }
-    // }
-    // }
-  ),
+    if (countryArray.length === 1) {
+      countryInfoEl.innerHTML = countryArray
+        .map(
+          country =>
+            `<li class= "country-info">
+    <img  src="${country.flags.svg}" width="100" alt = "Flag of ${
+              country.name.official
+            }"/>
+    <p class = "one-country" ><b> ${country.name.official}</b></p>
+    <p><b>Capital:  ${country.capital}</b></p>
+    <p><b>Population:  ${country.population}</b></p>
+    <p><b>Languages: ${Object.values(country.languages).join(', ')}</b></p>
+    </li>`
+        )
+        .join('');
+    }
+  }),
   DEBOUNCE_DELAY
 );
