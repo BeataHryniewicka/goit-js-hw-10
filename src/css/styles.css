@@ -21,12 +21,14 @@ body {
 
 .country-list {
   list-style: none;
-  font-size: 500 px;
-  font-weight: 500;
+  font-size: 30px;
 }
-/* .countryInfo{
-
+.country-info {
+  list-style: none;
 }
-.countriesList {
-  
-} */
+.one-country {
+  font-size: 1.5rem;
+}
+.inline-item {
+  display: inline-block;
+}

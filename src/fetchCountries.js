@@ -23,3 +23,18 @@ async function fetchCountries() {
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
+// export const fetchCountries = async () => {
+//   try {
+//     const response = await fetch(
+//       'https://restcountries.com/v3.1/all?fields=name,capital,population,flags,languages'
+//     );
+//     if (!response.ok) {
+//       throw new Error('No results foundes');
+//     } else {
+//       let countryArray = response.json;
+//       return countryArray;
+//     }
+//   } catch (error) {
+//     Notiflix.Notify.failure('Oops, there is no country with that name');
+//   }
+// };
