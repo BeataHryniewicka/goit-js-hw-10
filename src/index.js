@@ -20,6 +20,7 @@ inputEl.addEventListener(
 
     if (countryName === ' ') {
       clearInput();
+      return;
     }
 
     const countryArray = await fetchCountries(countryName);
@@ -29,11 +30,12 @@ inputEl.addEventListener(
       Notiflix.Notify.info(
         'Too many matches found. Please enter a more specific name.'
       );
+      clearInput();
     } else {
       countryListEl.innerHTML = countryArray
         .map(
-          country => `<li>
-          <img src="${country.flags.svg}" width="50" alt = "Flag of ${country.name.official}"/>
+          country => `<li  class="inline-item">
+          <img src="${country.flags.svg}" width="50" height= "30"alt = "Flag of ${country.name.official}"/>
            <p> <b>${country.name.official}</p></b> </li>
                   `
         )
@@ -41,6 +43,7 @@ inputEl.addEventListener(
     }
 
     if (countryArray.length === 1) {
+      clearInput();
       countryInfoEl.innerHTML = countryArray
         .map(
           country =>
@@ -54,7 +57,7 @@ inputEl.addEventListener(
     <p><b>Languages: ${Object.values(country.languages).join(', ')}</b></p>
     </li>`
         )
-        .join('');
+        .join(', ');
     }
   }),
   DEBOUNCE_DELAY
